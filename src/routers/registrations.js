@@ -14,6 +14,7 @@ router.post('/', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 12)
 
     const postNewUser = await newUserDb(username, hashedPassword)
+    session(hashedPassword)
     console.log('this postNewUser',postNewUser)
     
     // Hash the password: https://github.com/kelektiv/node.bcrypt.js#with-promises
